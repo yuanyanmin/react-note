@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+    <script src="node_modules/prop-types/prop-types.js"></script>
+</head>
+<body>
+    <div id="demoReact"></div>
+    
+
+    <script type="text/babel">
+
+    // react 事件处理
+    // react 绑定事件使用的是小驼峰命名法 在绑定函数的时候不能加（）---> 函数会立即执行
+
+    // 1. 修改 this 指向
+    // 1.1 bind
+    // 1.2 箭头函数
+    // 1.3 constructor 提前绑定
+    // 1.4 把事件的调用写成箭头函数的调用方式
+
+        class Com extends React.Component{
+            constructor(props) {
+                super(props)
+                this.func = this.func.bind(this)
+            }
+            funa() {
+                console.log('this', this)
+            }
+            funb = () => {
+                console.log('this', this)
+            }
+
+            func () {
+                console.log("this", this)
+            }
+
+            fund () {
+                console.log('this', this)
+            }
+            fune = (i, e) => {
+                console.log(i, e)
+            }
+            render() {
+                return (
+                    <div>
+                        <div>我是组件</div>
+                        <button onClick={this.funa.bind(this)}>bind 事件绑定</button>
+
+                        <button onClick={this.funb}>箭头函数 事件绑定</button>
+
+                        <button onClick={this.func}>提前 事件绑定</button>
+
+                        <button onClick={() => {this.fund()}}>调用方式为箭头函数 事件绑定</button>
+
+                        <h1>函数参数传递</h1>
+
+                        <button onClick={this.fune.bind(this, "参数")}>传递参数</button>
+
+                        <button onClick={(e) => {this.fune('参数', e)}}>箭头函数传递参数</button>
+
+                    </div>
+                )
+            }
+        }
+        
+        ReactDOM.render(<Com />, document.getElementById('demoReact'))
+
+    </script>
+</body>
+</html>

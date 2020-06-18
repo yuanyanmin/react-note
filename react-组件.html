@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+    <script src="node_modules/prop-types/prop-types.js"></script>
+</head>
+<body>
+    <div id="demoReact">
+
+    <script type="text/babel">
+        // 组件
+        /*
+         * 组件分为三部分 1. 属性props 2. 状态 state 3.生命周期
+         * 组件的创建
+        */
+
+        // 1. 函数组件/无状态组件
+        // function MyCom(props){
+        //     return <div>无状态组件</div>
+        // }
+
+        // // 调用组件
+        // let com = <div>{<MyCom></MyCom>}</div>
+        
+        // ReactDOM.render(com, document.getElementById('demoReact'))
+
+        // 2. 类组件 / 组件名首字母大写
+        // class MyCom extends React.Component{
+        //     render() {
+        //         return (
+        //             <div>类组件</div>
+        //         )
+        //     }
+        // }
+
+        // let com = <MyCom/>
+        
+        // ReactDOM.render(com, document.getElementById('demoReact'))
+
+        // 3.props
+        /*
+            prop 从组件外部向内部进行数据传递，父组件给子组件的数据传递
+        */
+    //    function Com(props) {
+    //        return (
+    //            <div>{props.text}---{props.num}</div>
+    //        )
+    //    }
+    //    let obj = {
+    //        text: '我是text数据',
+    //        num: '我是num'
+    //    }
+    //     // ReactDOM.render(<Com text="内容"/>, document.getElementById('demoReact'))
+
+    //     ReactDOM.render(<Com {...obj}/>, document.getElementById('demoReact'))
+
+        // class MyCom extends React.Component{
+        //     render() {
+        //         return (
+        //             <div>{this.props.name} --- {this.props.num}</div>
+        //         )
+        //     }
+        // }
+
+        // // let com = <MyCom name="name数据" num="num数据"/>
+
+        // let obj = {
+        //     name: '张三',
+        //     num: '111'
+        // }
+
+        // let com = <MyCom {...obj}/>
+        
+        // ReactDOM.render(com, document.getElementById('demoReact'))
+
+        // props 验证 默认值
+        // 函数组件
+    //     function Com(props) {
+    //        return (
+    //            <div>{props.text}---{props.num}</div>
+    //        )
+    //    }
+    //    Com.defaultProps = {
+    //        text: '默认name',
+    //        num: '默认数量'
+    //    }
+       
+        // 15x 的 react 可以使用 || 
+        //    function Com(props) {
+        //        props.text = props.text || '默认值'
+        //        return (
+        //            <div>{props.text}---{props.num}</div>
+        //        )
+        //    }
+
+        // props 验证
+        /*
+        * 1. 引用prop-type 库
+        */
+
+    //     Com.propTypes = {
+    //         text: PropTypes.number, // 验证text 传递进来的数据为 number
+    //         num: PropTypes.number.isRequired
+    //     }
+    //    let obj = {
+    //        text: 111,
+    //        num: 11
+    //    }
+
+    
+
+    //     ReactDOM.render(<Com {...obj}/>, document.getElementById('demoReact'))
+
+    // props 默认值,验证
+    // 类组件
+    // class Com extends React.Component {
+    //     static defaultProps = {
+    //         name: "默认值"
+    //     }
+    //     render() {
+    //         return (
+    //             <div>{this.props.name}</div>
+    //         )
+    //     }
+    // }
+
+    // Com.defaultProps = {
+    //     name: '张三',
+    // }
+
+    // Com.propTypes = {
+    //     name: PropTypes.number
+    // }
+
+    // let nameText = 123
+    // ReactDOM.render(<Com name={nameText}/>, document.getElementById('demoReact'))
+
+    // 组件外部
+    // let bool = true
+    // let MyCom = (props) => {
+    //     return (
+    //         <div style={{display: bool ? 'block' : "none"}}>我是子组件
+    //             {
+    //                 props.arr.map((v, i) => {
+    //                     return <p key={i}>{v}</p>
+    //                 })
+    //             }</div>
+    //     )
+    // }
+
+    // let dataArr = ["吃饭", "睡觉", "打豆豆"]
+
+    // let Com = () => {
+    //     return (
+    //         <div>
+    //             <h1 onClick={() => {bool=!bool;console.log(bool); render()}}>展示</h1>
+    //             <MyCom arr={dataArr}/>
+    //         </div>
+    //     )
+    // }
+
+
+
+    // function render() {
+    //     ReactDOM.render(<Com/>, document.getElementById('demoReact'))
+
+    // }
+
+    // render()
+
+
+
+    // state 状态
+    // props 是组件对外的接口
+    // state 是组件对内的接口
+    // 组件内可以引用其他组件 组件之间的引用就形成了一个树状的接口，如果下层组件需要使用上层组件的数据
+    // 上层组件就可以通过下层组件中 props 来进行数据的传递，因此 props 就是组件对外的接口
+    // 组件除了使用上层组件传递的数据之外，它自身也可能有需要管理的数据，这个对内管理数据的属性就是 state
+
+    // props 与 state 的区别
+    // state 是可变的
+    // props 对于当前页面的组件来说，值是可读，如果我们想修改 props 中的数据 那么我们修改传递给当前组件数据的父组件中的内容
+
+    // react 中我们只需要关心的是数据 当数据改变的时候页面就会自动发生改变
+    // 状态等同与页面中的数据 状态/数据改变了 --- 页面中对应的数据绑定的内容就会被 react 自动的进行改变
+    // 申明式渲染 --- 一切数据改变操作都不需要我们关系，只需要我们申明好数据 react 就会自动的对于数据进行相应的改变
+
+    // 如果使用状态，则不能使用无状态组件
+    // class Com extends React.Component{
+    //     // 在 ES6 中不管子类写不写 constructor ，在new实例的时候都会补上 constructor
+    //     // 可以不写，如果写了constructor之后，就必须在其中写上 super() 就是指向父类的构造方法
+    //     constructor(props) {
+    //         // 如果想在 constructor 使用 props 那么 super 中必须写上 props
+    //         super (props)
+
+    //         // 定义state
+    //         this.state = {
+    //             name: "西西",
+    //             newHtml: "<p>我是 state 中的内容</p>"
+    //         }
+    //     }
+    //     render () {
+    //         return (
+    //             // 修改
+    //             // this.setState({key:newValue}) 异步的 render 会自动触发 render 进行数据的渲染
+    //             <div>我是一个组件 {this.state.name}
+    //                 <button onClick={() => {this.setState({name: '哈哈'})}}>点我改变state</button>
+    //                 <p>{this.state.newHtml}</p>
+    //                 <p dangerouslySetInnerHTML={{__html: this.state.newHtml}}></p>
+
+    //                 {/*字符串标签插入的话， dangerouslySetInnerHTML={{__HTML: 你要插入的字符串}}*/}
+
+    //             </div>
+    //         )
+    //     }
+    // }
+
+    // 转发 refs
+    // react 当中提供了一个 ref 的数据，不能使用无状态组件
+    // 表示当前组件的真正实例的引用 它会返回绑定当前属性的元素
+    // 标识组件内部的元素--- 方便查找
+
+    // react 3 种方式进行 ref 的引用
+    // 1. 字符串的方式
+    // 2. 回调函数（推荐）在dom节点上或者组件上挂载函数，函数的入参形参 是 Dom 节点，它的效果与字符串的方式都是一样的，都是获取值得引用
+    // 3. React.createRef (16.3 新提供的)  把值付给一个变量，通过 ref 挂载在节点或者组件上，使用 ref 的 current 属性拿到这个节点
+
+    class Com extends React.Component{
+        constructor (props) {
+            super(props)
+            this.myRef = React.createRef()
+        }
+        fun = () => {
+            // console.log(this.refs.demoInput.value)
+            // console.log(this.textinput.value)
+            console.log(this.myRef.current.value)
+        }
+        render() {
+            return (
+                <div>
+                    我是子组件
+                    {/*
+                    <input type="text" ref="demoInput" placeholder="请输入"/>
+                    */}
+                    
+                    {/*
+                    <input type="text" ref={(input) => {this.textinput = input}} placeholder="请输入"/>
+                    */}
+
+                    <input type="text" placeholder="请输入" ref={this.myRef}/>
+                    <button onClick={this.fun}>点我得到输入框的值</button>
+                </div>
+            )
+        }
+    }
+    ReactDOM.render(<Com />, document.getElementById('demoReact'))
+
+    </script>
+</body>
+</html>

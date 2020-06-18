@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="demoReact"></div>
+
+    <script type="text/babel">
+        // react 列表渲染 map()
+        // let arr = ["吃饭", "睡觉", "打豆豆"];
+        // let myDom = arr.map((item, index) => {
+        //     // key 必须是独一无二的
+        //     return <p key={index}>{item}</p>
+        // })
+
+        // for in 循环
+        // function fun() {
+        //     let newarr = [];
+        //     for (let index in arr) {
+        //         newarr.push(<p key={index}>{arr[index]}</p>)
+        //     }
+        //     return newarr
+        // }
+
+        // ReactDOM.render(fun(), document.getElementById('demoReact'))
+
+        // 点击事件
+        // let arr = ["吃饭", "睡觉", "打豆豆"];
+
+        // let i = 0;
+
+        // function func() {
+
+        //     let myDom = arr.map((item, index) => {
+        //         // key 必须是独一无二的
+        //         return <p style={{color: i===index ? "red": ''}} key={index} onClick={() => {i = index; console.log('吃饭'); render()}}>{item}</p>
+        //     })
+        //     return myDom
+        // }
+        // function render() {
+        //     ReactDOM.render( func(), document.getElementById('demoReact'))
+
+        // }
+        // render()
+
+        // Object.keys 获取对象的键
+        // Object.value 获取对象的值
+        let obj = {
+            name: '张三',
+            age: 18,
+            sex: '男'
+        }
+
+        let myDom = <div>
+            {
+               /* Object.keys(obj).map((item, index) => {
+                    return <p key={index}>{item}</p>
+                })
+                */
+            }
+            {
+                Object.values(obj).map((item, index) => {
+                    return <p key={index}>{item}</p>
+                })
+            }
+            </div>
+       
+
+        ReactDOM.render(myDom, document.getElementById('demoReact'))
+
+    </script>
+</body>
+</html>

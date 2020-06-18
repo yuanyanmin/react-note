@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+    
+    <style>
+        .myStyle {
+            color: purple
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- 创建dom节点 -->
+    <div id="demoReact">
+
+    </div>
+
+    <!-- <script type="text/babel">
+        let myDom = <h1>hello world</h1>
+        ReactDOM.render(myDom, document.getElementById('demoReact'))
+    </script> -->
+
+    <!-- <script type="text/babel">     
+        // 注释   
+        let myDom = <h1>
+                        hello world
+                        {/*我是注释的内容*/}
+                    </h1>
+        ReactDOM.render(myDom, document.getElementById('demoReact'))
+    </script> -->
+
+    <!-- <script type="text/babel">     
+        // 多行标签 需要有一个父元素包裹
+        let myDom = (<div>
+                        <div>hello</div>
+                        <div>world</div> 
+                    </div>)
+        ReactDOM.render(myDom, document.getElementById('demoReact'))
+    </script> -->
+
+    <!-- <script type="text/babel">
+        // jsx 使用表达式
+        // 把表达式放在 {} 中
+        let text = "hello world"
+        let num = 123;
+        function fun(obj) {
+            return `姓名是：${obj.name} --- 年龄是：${obj.age}`
+        }
+        let user = {name: '张三', age: '18'}
+        let myDom = (
+            <div>
+                <div>{text}</div>
+                <div>{num}</div>
+                {/*计算*/}
+                <div>{num + 1}</div>
+                {/*函数的使用*/}
+                <div>{fun(user)}</div>
+            </div>
+        )
+        ReactDOM.render(myDom, document.getElementById('demoReact'))
+    </script> -->
+
+    <script type="text/babel">
+        // 三元运算符
+        let phone = 3999; 
+
+        // 数组
+
+        // let arr = [
+        //     <p>新闻列表1</p>,
+        //     <p>新闻列表2</p>,
+        //     <p>新闻列表3</p>,
+        //     <p>新闻列表4</p>,
+        //     <p>新闻列表5</p>,
+        //     <p>新闻列表6</p>
+        // ]
+        
+        // let myDom = (
+        //     <div>
+        //         <p>当前手机价格是{phone}---{phone > 4000 ? '很贵' : "很便宜"}</p>
+        //         <div>
+        //             {arr}
+        //         </div>
+        //     </div>
+        // )
+
+        // 属性设置
+        // let text="点我去百度"
+        // let linkUrl = 'http://www.baidu.com'
+        // let myDom = <a href={linkUrl}>{text}</a>
+
+        
+        // let myStyle = {color: "red", backgroundColor: "pink"}
+        // let myDom = <p style={myStyle}>我的样式</p>
+
+        // jsx 不能使用 class, 因为 class 是 js 的关键字
+        // 可以使用 className
+
+        let myDom = <p className="myStyle">紫色</p>
+
+        ReactDOM.render(myDom, document.getElementById('demoReact'))
+    </script>
+   
+    
+</body>
+</html>
