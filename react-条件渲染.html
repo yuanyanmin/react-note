@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="node_modules/babel-standalone/babel.min.js"></script>
+    <script src="node_modules/prop-types/prop-types.js"></script>
+</head>
+<body>
+    <div id="demoReact"></div>
+    
+
+    <script type="text/babel">
+
+    // 条件渲染 --- 根据状态的变化渲染其中的一部分
+
+    // if 语句 jsx 中不允许有 if
+        // class Com extends React.Component{
+        //     constructor(props) {
+        //         super(props)
+        //         this.state = {
+        //             bool: true
+        //         }
+        //     }
+
+        //     fun() {
+        //         this.setState({
+        //             bool: !this.state.bool
+        //         })
+        //     }
+
+        //     render() {
+        //         let text;
+        //         if (this.state.bool) {
+        //             text = "hello"
+        //         } else {
+        //             text = "world"
+        //         }
+        //         return (
+        //             <div>
+        //                 我是组件
+        //                 <button onClick={this.fun.bind(this)}>点我</button>
+        //                 {text}
+
+        //                 <p>{this.state.bool ? '哈哈' : '嘿嘿'}</p>
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        // 状态提升
+        // 多个组件需要反映相同的变化数据，提升到他们最近的一个父组件中
+        // 多个子组件需要利用到对方状态的情况下 那么这个时候就需要使用到状态提升
+
+        class ComA extends React.Component {
+            constructor(props) {
+                super (props)
+            }
+            render () {
+                return (
+                    <div>
+                        我是第一个组件---{this.props.text}</div>
+                )
+            }
+        }
+
+        class ComB extends React.Component {
+            constructor(props) {
+                super (props)
+            }
+            render () {
+                return (
+                    <div>
+                        我是第二个组件---{this.props.text}</div>
+                )
+            }
+        }
+
+        class Com extends React.Component {
+            constructor(props) {
+                super (props)
+                this.state = {
+                    comtext: "我是两个人都想使用的数据"
+                }
+            }
+            render () {
+                return (
+                    <div>
+                        我是父组件
+                        <ComA text={this.state.comtext}/> 
+                        <ComB text={this.state.comtext}/>
+                    </div>
+                )
+            }
+        }
+        
+        ReactDOM.render(<Com />, document.getElementById('demoReact'))
+
+    </script>
+</body>
+</html>
